@@ -11,7 +11,7 @@ package hilos;
 
 public class Hilos{
     public static void main(String[] args) {
-Cuenta C = new Cuenta("Mario",40);
+Cuenta C = new Cuenta("Mario",100);
 Usuario User1 = new Usuario(C, "Mario");
 Usuario User2 = new Usuario(C, "Jose");
 Usuario User3 = new Usuario(C, "Pepe");
@@ -19,6 +19,7 @@ Usuario User3 = new Usuario(C, "Pepe");
 User1.start();
 User2.start();
 User3.start(); 
+     System.out.println("Saldo final:"+C.getSaldo()); 
     }
 
 
