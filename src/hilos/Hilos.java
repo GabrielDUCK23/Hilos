@@ -11,19 +11,37 @@ import java.util.Date;
  * @author DELL
  */
 
-public class Hilos{
-    public static void main(String[] args) {
-Cuenta C = new Cuenta("Mario",100);
-Usuario User1 = new Usuario(C, "Mario");
-Usuario User2 = new Usuario(C, "Jose");
-Usuario User3 = new Usuario(C, "Pepe");
-
-User1.start();
-User2.start();
-User3.start(); 
-   Date fechaActual = new Date();
-        System.out.println(fechaActual);
-    }
+//
+//public class Hilos{
+//    public static void main(String[] args) {
+//Cuenta C = new Cuenta("Mario",100);
+//Usuario User1 = new Usuario(C, "Mario");
+//Usuario User2 = new Usuario(C, "Jose");
+//Usuario User3 = new Usuario(C, "Pepe");
+//
+//User1.start();
+//User2.start();
+//User3.start(); 
+//   Date fechaActual = new Date();
+//        System.out.println(fechaActual);
+//    }
+//=======
+////public class Hilos{
+////    public static void main(String[] args) {
+////Cuenta C = new Cuenta("Mario",100);
+////Usuario User1 = new Usuario(C, "Mario");
+////Usuario User2 = new Usuario(C, "Jose");
+////Usuario User3 = new Usuario(C, "Pepe");
+////     System.out.println("Gabriel Ernesto Rios Sanchez"); 
+////
+////User1.start();
+////User2.start();
+////User3.start(); 
+////     
+////     
+////     
+////    }
+//>>>>>>> 3f9d5c5c6d89a30a29dda1165f727970a3b6b066
 
 
 
@@ -53,5 +71,5 @@ User3.start();
 //        }
 //       
 //    }
-    
-}
+//    
+//}

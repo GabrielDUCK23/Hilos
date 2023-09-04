@@ -20,15 +20,16 @@ public class Usuario extends Thread {
     @Override
     public void run() {
 
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 3; i++) {
+
             switch ((int) ((Math.random() * 2) + 1)) {
 
                 case 1:
                     synchronized (C) {
 
-                        System.out.println(nom);
+                        System.out.println("----------------------------------" + nom + "------------------------------------------");
                         System.out.println("Saldo Inicial " + C.getSaldo());
-                        int Monto = (int) (Math.random() * 100);
+                        int Monto = (int) (Math.random() * 200);
                         System.out.println("Monto a depositar " + Monto);
                         C.Depositar(Monto);
                         System.out.println("Saldo Actual " + C.getSaldo() + "\n");
@@ -38,14 +39,15 @@ public class Usuario extends Thread {
                     break;
                 case 2:
                     synchronized (C) {
+                        int contador = 0;
                         System.out.println("");
-                        System.out.println(nom);
+                        System.out.println("----------------------------------" + nom + "------------------------------------------");
                         System.out.println("Saldo Inicial " + C.getSaldo());
-                        int Monto2 = (int) (Math.random() * 200);
+                        int Monto2 = (int) (Math.random() * 150);
 
                         System.out.println("Monto a Retirar " + Monto2);
 
-                        while (C.getSaldo() < Monto2) {
+                        while (C.getSaldo() <= Monto2) {
                             System.out.println("No se pudo retirar ya que tu saldo es insuficiente");
                             System.out.println("Tu saldo es: " + C.getSaldo() + " Tu monto a retirar es de:" + Monto2);
                             int restante = Monto2 - C.getSaldo();
@@ -55,25 +57,34 @@ public class Usuario extends Thread {
                             C.Retirar(Abono);
                             Monto2 = restante;
 
-                            System.out.println("-----------" + "Proceso en espera " + nom + " Saldo faltante: " + restante + "--------------");
+                            System.out.println("-----------" + "Proceso en espera " + nom + " Saldo faltante: " + restante + "--------------\n");
 
                             try {
-                               
-                                C.wait(4000);  
+
+                                C.wait(1000);
+
+                                contador++;
+
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             }
-                            System.out.println("-----------" + "Proceso de reanuracion " + nom + "--------------");
+                            System.out.println("-----------" + "Proceso de reanudación " + nom + "--------------");
                             System.out.println("Saldo: " + C.getSaldo());
                             System.out.println("Monto a Retirar " + Monto2);
 
-                            if (C.getSaldo() < Monto2) {
-                                System.out.println("Cobrando saldo pendiente: " + restante);
-                                C.Retirar(restante); 
-                                System.out.println("Saldo actual después de cobrar: " + C.getSaldo());
+                            if (contador >= 3) {
+                                if (C.getSaldo() < Monto2) {
+                                    System.out.println("El saldo no es suficiente: " + restante);
+                                    Monto2 = 0;
+                                    System.out.println("Saldo actual después de cobrar: " + C.getSaldo());
+                                    contador++;
+                                    Monto2 = 0;
+                                }
+                                System.out.println("Tres intentos realizados, no es posible realizar el retiro.");
                                 return;
                             }
                         }
+
                         C.notify();
                         C.notifyAll();
                         C.Retirar(Monto2);
@@ -83,8 +94,8 @@ public class Usuario extends Thread {
                         break;
                     }
             }
-
         }
+        System.out.println("Gabriel Ernesto Rios Sanchez");
 
     }
 
