@@ -4,6 +4,8 @@
  */
 package hilos;
 
+import java.util.Date;
+
 /**
  *
  * @author DELL
@@ -19,9 +21,9 @@ Usuario User3 = new Usuario(C, "Pepe");
 User1.start();
 User2.start();
 User3.start(); 
-     System.out.println("Saldo final:"+C.getSaldo()); 
+   Date fechaActual = new Date();
+        System.out.println(fechaActual);
     }
-
 
 
 

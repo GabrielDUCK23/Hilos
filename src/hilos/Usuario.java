@@ -58,8 +58,8 @@ public class Usuario extends Thread {
                             System.out.println("-----------" + "Proceso en espera " + nom + " Saldo faltante: " + restante + "--------------");
 
                             try {
-                                System.out.println("Esperando 8 segundos...");
-                                C.wait(8000);  // Esperar 8 segundos (8000 ms)
+                               
+                                C.wait(4000);  
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             }
